@@ -1,0 +1,16 @@
+     1                                 %line 1+1 add1.asm
+     2                                 [segment .data]
+     3 00000000 AF00000000000000       a dq 175
+     4 00000008 0110000000000000       b dq 4097
+     5                                 
+     6                                 [segment .text]
+     7                                 [global main]
+     8                                 main:
+     9                                 
+    10 00000000 488B05(F2FFFFFF)        mov rax, [rel a]
+    11 00000007 480305(F2FFFFFF)        add rax, [rel b]
+    12 0000000E 31C0                    xor eax, eax
+    13 00000010 C3                      ret
+    14                                 
+    15                                 
+    16                                 

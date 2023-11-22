@@ -1,0 +1,21 @@
+     1                                 %line 1+1 exit0_main.asm
+     2                                 
+     3                                 
+     4                                 
+     5                                 [segment .text]
+     6                                 [global main]
+     7                                 main
+     8 00000000 B801000000              mov eax, 1
+     9 00000005 BB00000000              mov ebx, 0
+    10 0000000A CD80                    int 0x80
+    11                                 
+    12                                 
+    13                                 
+    14                                 
+    15                                 
+    16                                 
+    17                                 
+    18                                 
+    19                                 
+    20                                 
+    21                                 

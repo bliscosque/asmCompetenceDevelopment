@@ -1,0 +1,21 @@
+     1                                 %line 1+1 test_pithagore.asm
+     2                                 [segment .data]
+     3 00000000 0300000000000000       a dq 3
+     4 00000008 0400000000000000       b dq 4
+     5 00000010 0500000000000000       c dq 5
+     6                                 
+     7                                 [segment .text]
+     8                                 [global main]
+     9                                 main:
+    10 00000000 488B05(F2FFFFFF)        mov rax, [rel a]
+    11 00000007 480FAFC0                imul rax, rax
+    12 0000000B 488B15(F2FFFFFF)        mov rdx, [rel b]
+    13 00000012 480FAFD2                imul rdx, rdx
+    14 00000016 488B0D(F2FFFFFF)        mov rcx, [rel c]
+    15 0000001D 480FAFC9                imul rcx,rcx
+    16 00000021 4801D0                  add rax, rdx
+    17 00000024 4829C8                  sub rax, rcx
+    18 00000027 C3                      ret
+    19                                 
+    20                                 
+    21                                 
