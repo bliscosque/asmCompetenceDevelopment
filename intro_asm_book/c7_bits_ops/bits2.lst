@@ -16,10 +16,23 @@
     16 00000022 480FBA2C25[08000000]-     bts qword[set+8],12
     17 00000022 0C                 
     18                                 
-    19 0000002C 4831C0                  xor rax,rax
-    20 0000002F C9                      leave
-    21 00000030 C3                      ret
-    22                                 
-    23                                 
-    24                                 
-    25                                 
+    19 0000002C 48C7C04C000000          mov rax, 76
+    20 00000033 4889C3                  mov rbx, rax
+    21 00000036 48C1EB06                shr rbx,6
+    22 0000003A 48C7C13F000000          mov rcx,0x3f
+    23 00000041 31D2                    xor edx,edx
+    24 00000043 488D3425[00000000]      lea rsi,[set]
+    25 0000004B 480FA30CDE              bt [rsi+8*rbx],rcx
+    26 00000050 480FA30CDD[00000000]      bt [set+8*rbx],rcx
+    27 00000059 0F92D2                  setc dl
+    28                                 
+    29 0000005C 480FAB0CDE              bts [rsi+8*rbx],rcx
+    30 00000061 480FB30CDE              btr [rsi+8*rbx],rcx
+    31                                 
+    32 00000066 4831C0                  xor rax,rax
+    33 00000069 C9                      leave
+    34 0000006A C3                      ret
+    35                                 
+    36                                 
+    37                                 
+    38                                 
