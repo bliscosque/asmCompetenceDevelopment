@@ -1,0 +1,23 @@
+     1                                 %line 1+1 if.asm
+     2                                 [segment .data]
+     3 00000000 6400000000000000       a dq 100
+     4 00000008 C800000000000000       b dq 200
+     5                                 [segment .text]
+     6                                 [global main]
+     7                                 main:
+     8 00000000 55                      push rbp
+     9 00000001 4889E5                  mov rbp, rsp
+    10 00000004 488B0425[00000000]      mov rax, [a]
+    11 0000000C 488B1C25[00000000]      mov rbx, [b]
+    12 00000014 4839D8                  cmp rax, rbx
+    13 00000017 7D0E                    jge in_order
+    14 00000019 48891C25[00000000]      mov [a], rbx
+    15 00000021 48890425[00000000]      mov [b], rax
+    16                                 in_order:
+    17 00000029 31C0                    xor eax, eax
+    18 0000002B C9                      leave
+    19 0000002C C3                      ret
+    20                                 
+    21                                 
+    22                                 
+    23                                 

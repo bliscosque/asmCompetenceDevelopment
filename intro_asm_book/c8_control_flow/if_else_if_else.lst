@@ -1,0 +1,32 @@
+     1                                 %line 1+1 if_else_if_else.asm
+     2                                 [segment .data]
+     3 00000000 6400000000000000       a dq 100
+     4 00000008 C800000000000000       b dq 200
+     5 00000010 2C01000000000000       c dq 300
+     6 00000018 0000000000000000       result dq 0
+     7                                 [segment .text]
+     8                                 [global main]
+     9                                 main:
+    10 00000000 55                      push rbp
+    11 00000001 4889E5                  mov rbp, rsp
+    12 00000004 488B0425[00000000]      mov rax, [a]
+    13 0000000C 488B1C25[00000000]      mov rbx, [b]
+    14 00000014 4839D8                  cmp rax, rbx
+    15 00000017 7D0A                    jnl else_if
+    16 00000019 48C70425[00000000]-     mov qword [result], 1
+    17 00000019 01000000           
+    18 00000025 488B0C25[00000000]     else_if mov rcx, [c]
+    19 0000002D 4839C8                  cmp rax, rcx
+    20 00000030 7E0C                    jng else
+    21 00000032 48C70425[00000000]-     mov qword [result], 2
+    22 00000032 02000000           
+    23 0000003E EB0A                    jmp endif
+    24 00000040 48C70425[00000000]-    else: mov qword [result], 3
+    25 00000040 03000000           
+    26 0000004C 31C0                   endif: xor eax, eax
+    27 0000004E C9                      leave
+    28 0000004F C3                      ret
+    29                                 
+    30                                 
+    31                                 
+    32                                 
